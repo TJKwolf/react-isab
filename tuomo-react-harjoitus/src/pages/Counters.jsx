@@ -16,11 +16,18 @@ export const Counters =()=>{
             setCoun2t(count2 +1);
         },1000);
     })
+
+    const[count3, setCoun3t] = useState(0);
+    useEffect(( )=>{
+        setCoun3t(count3+1);
+    },[count2])
+
     
     return(
         <div>
             <h1>i've renderd {count} times!</h1>
             <h2>i've renderd {count2} times!</h2>
+            <h2>i've renderd {count3} times!</h2>
         </div>
     );
 }

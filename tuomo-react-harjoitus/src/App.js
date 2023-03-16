@@ -4,6 +4,8 @@ import { Buttons } from "./pages/buttons";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Router } from "./pages/router";
 import { Counters } from "./pages/Counters";
+import { Items } from "./pages/Items";
+import { Item } from "./pages/Item";
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +15,7 @@ function App() {
           <Route index element={<Message/>}/>
           <Route path='Buttons' element={<Buttons/>}/>
           <Route path='Counters' element={<Counters/>}/>
+          <Route path='Items' element={<Items/>}/>
         </Route>
         </Routes>
       </div>

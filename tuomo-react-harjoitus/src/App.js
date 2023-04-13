@@ -7,6 +7,7 @@ import { Counters } from "./pages/Counters";
 import { Items } from "./pages/Items";
 import { Item } from "./pages/Item";
 import { List } from "./pages/List";
+import { TicTacToe } from "./TicTacToe/TicTacToe";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
           <Route path='Counters' element={<Counters/>}/>
           <Route path='Items' element={<Items/>}/>
           <Route path='List' element={<List/>}/>
+          <Route path='TicTacToe' element={<TicTacToe/>}/>
         </Route>
         </Routes>
       </div>

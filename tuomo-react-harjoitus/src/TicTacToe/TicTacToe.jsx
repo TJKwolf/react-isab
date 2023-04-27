@@ -10,13 +10,20 @@ export const TicTacToe=()=>{
     const[gameState, setGameState] = useState(intialBoard);
     const[isXTurn, setIsXTurn] = useState(true);
 
-    const onSquareClick = () =>{
-        let strings = Array.form(gameState);
+    const onSquareClick = (index) =>{
+        let strings = Array.from(gameState);
+        if(strings[index] !== '')
+        {
+            return;
+        }
+        strings[index] = isXTurn ? 'X' : 'O';
+        setGameState(strings);
+        setIsXTurn(!isXTurn);
     }
     return(
         <div>
             <h1>Tic-Tac-Toe</h1>
-            <Board gameState={gameState}/>
+            <Board gameState={gameState} onSquareClick={onSquareClick}/>
         </div>
     )
 }

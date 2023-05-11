@@ -15,11 +15,21 @@ export const TicTacToe=()=>{
         const winner = checkWinner();
         if(winner){
             setStatus(`winner: ${winner}`);
-        }
-    },[gameState])
+        }else if(!gameState.includes(''))
+     {
+        setStatus(" you suck. Suck my d!ck. You both lost");
+     }else{
+        setStatus(`${isXTurn ? 'X' : 'O'}'s turn`);
+     }
 
+    },[gameState])
     const onSquareClick = (index) =>{
         let strings = Array.from(gameState);
+
+        if(status.includes("winner")){
+            return;
+        }
+
         if(strings[index] !== '')
         {
             return;
@@ -35,6 +45,7 @@ export const TicTacToe=()=>{
             [3,4,5],
             [6,7,8],
             [0,3,6],
+            [1,4,7],
             [2,5,8],
             [0,4,8],
             [2,4,6],
@@ -50,9 +61,34 @@ export const TicTacToe=()=>{
 
     return(
         <div>
-            <h1>Tic-Tac-Toe</h1>
-            <Board gameState={gameState} onSquareClick={onSquareClick}/>
-            {status}
+                <div className="gamer">
+                    <h1>Tic-Tac-Toe</h1>
+                    <Board gameState={gameState} onSquareClick={onSquareClick}/>
+                    {!status.includes("winner") && (
+                    <>
+
+                    <span>{status}</span> 
+                    <button onClick={()=>{
+                        setGameState(intialBoard);
+                        setIsXTurn(true);
+                    }}>Clear button</button>
+                    </>
+                        
+                    )}
+
+                    {status.includes("winner") && (
+                        <>
+
+                        <span style={{color:"blue"}}>{status}</span> 
+                        <button style={{background: "lightgreen"}} onClick={()=>{
+                            setGameState(intialBoard);
+                            setIsXTurn(true);
+                        }}>Play again please</button>
+                        </>
+                        
+                    )}
+                    
+                </div>
         </div>
     )
 }
